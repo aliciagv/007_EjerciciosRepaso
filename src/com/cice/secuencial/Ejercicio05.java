@@ -26,21 +26,39 @@ public class Ejercicio05 {
     
     public static void main(String[] args) {
         
-        System.out.println("Introduce la fecha de nacimiento en este formato: dd/M/yyyy");
-        String sDate= sc.next();
-        Date fecha=null;       
+       
+        boolean isDate=false;
+        String sDate="";
+        
+        do {
+            System.out.print("Introduce la fecha de nacimiento en este formato: dd/M/yyyy: ");
+            sDate= sc.next();
+            Date fecha=null;       
         try {
             fecha = sdf.parse(sDate);
-            String[] sarray= sDate.split("/");
-            int suma=0;
-            for (String s:sarray){
-                suma += Integer.parseInt(s);
-            }
-            System.out.println("La suma es: "+ suma );
+            isDate=true;
             
         } catch (ParseException ex) {
             System.out.println("El formato de la fecha es incorrecto");
         }
+        
+        } while (!isDate);
+        
+        String[] sarray= sDate.split("/");
+        int suma=0;
+        for (String s:sarray){
+                suma += Integer.parseInt(s);
+            }
+        //System.out.println("La suma es: "+ suma );
+        
+        String sSuma = String.valueOf(suma);
+        suma=0;
+        for (int i=0; i<sSuma.length(); i++){
+            suma = suma +Character.getNumericValue(sSuma.charAt(i));
+        }
+        
+        System.out.println("El número de la suerte es: " + suma);
+        
         
     }
     
