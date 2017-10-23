@@ -29,11 +29,10 @@ public class Ejercicio05 {
        
         boolean isDate=false;
         String sDate="";
-        
+        Date fecha=null;  
         do {
             System.out.print("Introduce la fecha de nacimiento en este formato: dd/M/yyyy: ");
-            sDate= sc.next();
-            Date fecha=null;       
+            sDate= sc.next();      
         try {
             fecha = sdf.parse(sDate);
             isDate=true;
